@@ -7,13 +7,13 @@ class Mobil{
     public $merk;
     //cara penulisan method
     function maju () {
-        //isi method maju
+        //isi method maju()
         return "Mobil maju";
     }
 
-    function mundur() {
-        //isi method berhenti
-        return "Mobil mundur";
+    function berhenti() {
+        //isi method berhenti()
+        return "Mobil berhenti";
     }
 }
 
@@ -42,5 +42,5 @@ echo "<br>merk: ". $mobil_ahmad->merk;
 echo $mobil_ahmad->maju();
 echo "<br>";
 echo $mobil_ahmad->berenti();
-
+?>
 
