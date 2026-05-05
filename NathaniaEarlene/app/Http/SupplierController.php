@@ -2,32 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class SupplierController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-         $products = [
-            ['id' => 1, 'name' => 'Laptop', 'price' => 15000000],
-            ['id' => 2, 'name' => 'Mouse', 'price' => 5000000],
-            ['id' => 3, 'name' => 'Keyboard', 'price' => 3000000],
-            ['id' => 4, 'name' => 'Monitor', 'price' => 2000000]
+        $supplier = [
+            ['id' => 1, 'name' => 'Supplier A', 'address' => 'Jl. Merdeka No. 1'],
+            ['id' => 2, 'name' => 'Supplier B', 'address' => 'Jl. Sudirman No. 2'],
+            ['id' => 3, 'name' => 'Supplier C', 'address' => 'Jl. Thamrin No. 3'],
+            ['id' => 4, 'name' => 'Supplier D', 'address' => 'Jl. Gatot Subroto No. 4']
         ];
-        //$products = Product::all();  //cara1
-        $product = DB::select('SELECT * FROM products');  //cara2
-        // $product = DB::table('products')->get();  //cara3
 
-        $title = 'Daftar Produk';
+        $title = 'Daftar Supplier';
 
-        return view('produk.index', compact('title', 'products'));
-        // return view('produk.index', [
-        //     'products' => $products,
+        return view('supplier.index', compact('title', 'supplier'));
+        // return view('supplier.index', [
+        //     'supplier' => $supplier,
         //     'title' => $title
         // ]);
     }
@@ -37,7 +32,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('produk.create');
+        return view('supplier.create');
     }
 
     /**
@@ -53,9 +48,7 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        $title = 'Detail Produk';
-        $product = ['id' => 4, 'name' => 'Monitor', 'price' => 2000000];
-        return view('produk.detail', compact('id', 'product', 'title'));
+        //
     }
 
     /**
