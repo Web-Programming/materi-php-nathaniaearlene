@@ -13,17 +13,19 @@ class ProductController extends Controller
      */
     public function index()
     {
-         $products = [
-            ['id' => 1, 'name' => 'Laptop', 'price' => 15000000],
-            ['id' => 2, 'name' => 'Mouse', 'price' => 5000000],
-            ['id' => 3, 'name' => 'Keyboard', 'price' => 3000000],
-            ['id' => 4, 'name' => 'Monitor', 'price' => 2000000]
-        ];
-        //$products = Product::all();  //cara1
-        $product = DB::select('SELECT * FROM products');  //cara2
-        // $product = DB::table('products')->get();  //cara3
-
         $title = 'Daftar Produk';
+
+
+        //  $products = [
+        //     ['id' => 1, 'name' => 'Laptop', 'price' => 15000000],
+        //     ['id' => 2, 'name' => 'Mouse', 'price' => 5000000],
+        //     ['id' => 3, 'name' => 'Keyboard', 'price' => 3000000],
+        //     ['id' => 4, 'name' => 'Monitor', 'price' => 2000000]
+        // ];
+        //$products = Product::all();  //cara1
+        // $product = DB::select('SELECT * FROM products');  //cara2
+        $product = DB::table('products')->get();  //cara3
+
 
         return view('produk.index', compact('title', 'products'));
         // return view('produk.index', [
