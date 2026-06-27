@@ -15,11 +15,8 @@
 <div class="container-fluid">
     <h1 class="mb-4">{{ $title }}</h1>
 
-    <p>Nama Supplier: {{ $supplier['name'] }}</p>
-    <p>ID Supplier: {{ $supplier['id'] }}</p>
-    <p>Contact Number: {{ $supplier['contact_number'] }}</p>
-    <p>Address: {{ $supplier['address'] }}</p>
-    <hr>
-    <a href="{{ url('/supplier') }}" class="btn  btn-primary">Kembali</a>
+    <div class="tabel-responsive">
+        
+    </div>
 </div>
 @endsection

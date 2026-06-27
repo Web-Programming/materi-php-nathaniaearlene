@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 //Route ke halaman utama (home)
 Route::get('/', function () {
-    echo "hallo nama saya seven";
-    //return view('welcome');
+    return view('home');
 });
 
 //Route ke halaman alamat
@@ -111,6 +110,9 @@ Route::get('/detailproduk', function(){
 // });
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SupplierController;
+
 //php artisan make:controller ProductController -resource
 Route::resource('/produk', ProductController::class);
 Route::get('/produk/search', ProductController::class.'@search');
@@ -120,8 +122,22 @@ Route::get('/produk/detail', ProductController::class.'@detail');
 //     return view('supplier.index');
 // });
 
-use App\Http\Controllers\SupplierController;
 //php artisan make:controller SupplierController -resource
 Route::resource('/supplier', SupplierController::class);
 Route::get('/supplier/search', SupplierController::class.'@search');
 Route::get('/supplier/detail', SupplierController::class.'@detail');
+
+// Auth routes
+Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/register', [AuthController::class, 'registerForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
+
+Route::get('/dashboard', function () {
+    $totalBarang = \App\Models\Product::count();
+    $barangTersedia = \App\Models\Product::where('stock', '>', 0)->count();
+    $barangHabis = \App\Models\Product::where('stock', '=', 0)->count();
+
+    return view('dashboard', compact('totalBarang', 'barangTersedia', 'barangHabis'));
+})->middleware('auth');
