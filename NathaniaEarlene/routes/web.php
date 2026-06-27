@@ -138,6 +138,8 @@ Route::get('/dashboard', function () {
     $totalBarang = \App\Models\Product::count();
     $barangTersedia = \App\Models\Product::where('stock', '>', 0)->count();
     $barangHabis = \App\Models\Product::where('stock', '=', 0)->count();
+    $nilaiStok = 0;
+    $barangTerbaru = collect();
 
-    return view('dashboard', compact('totalBarang', 'barangTersedia', 'barangHabis'));
+    return view('dashboard', compact('totalBarang', 'barangTersedia', 'barangHabis', 'nilaiStok', 'barangTerbaru'));
 })->middleware('auth');

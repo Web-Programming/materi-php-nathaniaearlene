@@ -25,7 +25,7 @@ class ProductController extends Controller
         // ];
         //$products = Product::all();  //cara1
         // $product = DB::select('SELECT * FROM products');  //cara2
-        $product = DB::table('products')->get();  //cara3
+        $products = DB::table('products')->get();  //cara3
 
 
         return view('produk.index', compact('title', 'products'));
